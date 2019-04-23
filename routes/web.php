@@ -22,4 +22,17 @@ $router->get('/key', function() {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('register',  ['uses' => 'AuthUserController@register']);
     $router->post('login', ['uses' => 'AuthUserController@login']);
+
+    $router->group(['middleware' => 'auth'], function () use ($router){
+        /**
+         * Routes for resource item
+         */
+        $router->get('item/complete', 'ItemsController@complete_item');
+        $router->get('item/incomplete', 'ItemsController@incomplete_item');
+        $router->get('item/checklist', 'ItemsController@item_with_checklist');
+        $router->get('item/{id}', 'ItemsController@get');
+        $router->post('item', 'ItemsController@add');
+        $router->put('item/{id}', 'ItemsController@put');
+        $router->delete('item/{id}', 'ItemsController@remove');  
+    });
 });
