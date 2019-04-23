@@ -29,7 +29,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
          */
         $router->get('item/complete', 'ItemsController@complete_item');
         $router->get('item/incomplete', 'ItemsController@incomplete_item');
-        $router->get('item/checklist', 'ItemsController@item_with_checklist');
+        $router->get('item/checklist/{checklist}', 'ItemsController@item_with_checklist');
+        $router->get('item/{itemid}/checklist/{checklistid}', 'ItemsController@get_checklist_item');
+        $router->post('item/checklist/{checklist}', 'ItemsController@create_checklist_item');
+        $router->delete('item/{itemid}/checklist/{checklistid}','ItemsController@destroy');
+
         $router->get('item/{id}', 'ItemsController@get');
         $router->post('item', 'ItemsController@add');
         $router->put('item/{id}', 'ItemsController@put');
