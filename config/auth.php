@@ -17,5 +17,8 @@
                 'driver' => 'eloquent',
                 'model' => \App\User::class
             ]
-        ]
+        ],
+       'passwords' => [
+                //
+        ],
     ];

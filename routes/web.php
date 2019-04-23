@@ -14,3 +14,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/key', function() {
+    return str_random(32);
+});
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('register',  ['uses' => 'AuthUserController@register']);
+    $router->post('login', ['uses' => 'AuthUserController@login']);
+});
