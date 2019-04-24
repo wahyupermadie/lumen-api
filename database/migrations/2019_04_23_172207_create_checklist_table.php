@@ -18,11 +18,11 @@ class CreateChecklistTable extends Migration
             $table->string('object_domain');
             $table->bigInteger('template_id');
             $table->string('object_id');
-            $table->string('description');
-            $table->boolean('is_completed');
+            $table->string('description')->nullable();
+            $table->boolean('is_completed')->nullable();
             $table->string('completed_at')->nullable();
             $table->dateTime('due')->nullable();
-            $table->integer('urgency');
+            $table->integer('urgency')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

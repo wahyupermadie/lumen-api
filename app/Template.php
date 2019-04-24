@@ -3,6 +3,7 @@
 namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Checklist;
+use App\Item;
 
 class Template extends Model
 {
@@ -12,5 +13,10 @@ class Template extends Model
     public function checklist()
     {
         return $this->hasOne(Checklist::class);
+    }
+
+    public function item()
+    {
+        return $this->hasMany(Item::class);
     }
 }

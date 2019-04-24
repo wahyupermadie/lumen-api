@@ -133,4 +133,22 @@ class ItemsController extends Controller {
             'message' => "Error Deleted Data"
         ],500);
     }
+
+    public function put($itemid,$checklistid,Request $request)
+    {
+        $item = Item::updateOrCreate(
+            ['checklist_id' => $checklistid, 'id' => $itemid],
+            [
+                'name' => $request->description,
+                'due' => $request->due,
+                'urgency' => $request->urgency
+            ]
+        );
+        if($item){
+            return response()->json(['message' => 'Update Successfully'],200);
+        }
+        return response()->json([
+            'message' => "Error Update Data"
+        ],500);
+    }
 }

@@ -33,10 +33,25 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('item/{itemid}/checklist/{checklistid}', 'ItemsController@get_checklist_item');
         $router->post('item/checklist/{checklist}', 'ItemsController@create_checklist_item');
         $router->delete('item/{itemid}/checklist/{checklistid}','ItemsController@destroy');
+        $router->put('item/{itemid}/checklist/{checklistid}', 'ItemsController@put'); 
+        
+        /**
+         * Routes for resource template
+         */
+        $router->get('template', 'TemplatesController@all');
+        $router->get('template/{id}', 'TemplatesController@get');
+        $router->post('template', 'TemplatesController@add');
+        $router->put('template/{id}', 'TemplatesController@put');
+        $router->delete('template/{id}', 'TemplatesController@remove');
 
-        $router->get('item/{id}', 'ItemsController@get');
-        $router->post('item', 'ItemsController@add');
-        $router->put('item/{id}', 'ItemsController@put');
-        $router->delete('item/{id}', 'ItemsController@remove');  
+        /**
+         * Routes for resource checklist
+         */
+        $router->get('checklist', 'ChecklistsController@all');
+        $router->get('checklist/{id}', 'ChecklistsController@get');
+        $router->post('checklist', 'ChecklistsController@add');
+        $router->put('checklist/{id}', 'ChecklistsController@put');
+        $router->delete('checklist/{id}', 'ChecklistsController@remove');
     });
 });
+
