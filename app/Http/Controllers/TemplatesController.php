@@ -27,4 +27,20 @@ class TemplatesController extends Controller {
             'message' => "Error Deleted Data"
         ],500);
     }
+
+    public function put(Request $request,$templateid)
+    {
+        $item = Template::updateOrCreate(
+            ['id' => $templateid],
+            [
+                'name' => $request->name
+            ]
+        );
+        if($item){
+            return response()->json(['message' => 'Update Successfully'],200);
+        }
+        return response()->json([
+            'message' => "Error Update Data"
+        ],500);
+    }
 }
