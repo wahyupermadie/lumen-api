@@ -16,4 +16,15 @@ class TemplatesController extends Controller {
     {
         return Template::with(['checklist'])->with(['item'])->find($templateid);
     }
+
+    public function remove($templateid)
+    {
+        $deleted = Template::find($checklistid)->delete();
+        if($deleted){
+            return response()->json(['message' => 'Delete Successfully'],200);
+        }
+        return response()->json([
+            'message' => "Error Deleted Data"
+        ],500);
+    }
 }
