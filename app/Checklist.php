@@ -4,8 +4,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Item;
 use App\Template;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Checklist extends Model
 {
+    use SoftDeletes;
     protected $table="checklists";
     protected $dates = ['deleted_at'];
     public $fillable = [
